@@ -1,22 +1,28 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: hello
+  name: hellox
 spec:
   params:
     - name: greeting
       default: Hello World
   steps:
     - name: echo
+      env:
+        - name: ARGO_TEKTON_USER
+          valueFrom:
+            secretKeyRef:
+              key: argo-tekton-account
+              name: tekton-ci-secrets
       image: alpine
       script: |
         #!/bin/sh
-        echo "$(params.greeting)"
+        echo $ARGO_TEKTON_USER
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: goodbye
+  name: goodbyex
 spec:
   steps:
     - name: echo
