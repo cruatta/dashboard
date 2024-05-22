@@ -9,7 +9,7 @@ spec:
   tasks:
     - name: hello
       taskRef:
-        name: hello
+        name: hellox
       params:
         - name: greeting
           value: "$(params.hello-greeting)"
@@ -17,4 +17,4 @@ spec:
       runAfter:
         - hello
       taskRef:
-        name: goodbye
+        name: goodbyex
